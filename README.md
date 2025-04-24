@@ -2,77 +2,80 @@
 
 A responsive React + Redux Toolkit application that tracks real-time cryptocurrency prices using the CoinGecko API.
 
+## 🚀 Features
 
-## Features
+- **Live data from CoinGecko**: Real-time cryptocurrency market updates  
+- **Auto-refreshing**: Data refreshes every 10 seconds  
+- **Responsive design**: Optimized for mobile, tablet, and desktop  
+- **Redux Toolkit**: Centralized state management  
+- **Visual price charts**: 7-day sparkline charts for each coin  
+- **Performance optimized**: Selectors and `memo` used to reduce unnecessary re-renders  
 
-- **Live data from CoinGecko**: Real cryptocurrency market data
-- **Auto-refreshing**: Updates every 10 seconds
-- **Responsive design**: Works on mobile, tablet, and desktop
-- **Redux state management**: All data managed through Redux Toolkit
-- **Visual price charts**: 7-day sparkline charts for each cryptocurrency
-- **Performance optimized**: Using selectors and memo to prevent unnecessary rerenders
+## 🛠 Tech Stack
 
-## Tech Stack
+- **React 18**
+- **Redux Toolkit**
+- **Tailwind CSS**
+- **CoinGecko API**
 
-- React 18
-- Redux Toolkit for state management
-- Tailwind CSS for styling
-- CoinGecko API for cryptocurrency data
-
-## Architecture
+## 📁 Project Structure
 
 ```
 src/
 ├── app/
 │   └── store.js             # Redux store configuration
 ├── components/
-│   ├── CryptoTable.jsx      # Main table component
-│   ├── CryptoRow.jsx        # Individual crypto row component
+│   ├── CryptoTable.jsx      # Table displaying all crypto data
+│   ├── CryptoRow.jsx        # Individual crypto row
 │   └── SparklineChart.jsx   # SVG sparkline chart component
 ├── features/
 │   └── crypto/
 │       └── cryptoSlice.js   # Redux slice with async thunks
 ├── services/
-│   └── cryptoService.js     # Service to manage API calls
-├── App.jsx                  # Main app component
+│   └── cryptoService.js     # Handles API requests
+├── App.jsx                  # Main application component
 └── index.js                 # Entry point
 ```
 
-## State Management Flow
+## 🔁 State Management Flow
 
-1. The app initializes and starts the CryptoApiService
-2. CryptoApiService dispatches the fetchCryptoData async thunk
-3. Redux handles the pending/fulfilled/rejected states
-4. Data is fetched from CoinGecko API and stored in Redux
-5. Components access data via selectors and render
-6. Every 10 seconds, new data is fetched and the cycle repeats
+1. App initializes and starts `cryptoService`
+2. `fetchCryptoData` async thunk is dispatched
+3. Redux handles loading, success, and error states
+4. Data from CoinGecko is stored in Redux state
+5. Components subscribe to Redux state via selectors
+6. Data auto-refreshes every 10 seconds
 
-## Setup Instructions
+## 🧰 Getting Started
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/yourusername/crypto-tracker.git
-   cd crypto-tracker
-   ```
+### 1. Clone the repository
 
-2. Install dependencies:
-   ```
-   npm install
-   ```
+```bash
+git clone https://github.com/yourusername/Real-time-Crypto-Price-Tracker.git
+cd Real-time-Crypto-Price-Tracker
+```
 
-3. Start the development server:
-   ```
-   npm start
-   ```
+### 2. Install dependencies
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+```bash
+npm install
+```
 
-## CoinGecko API
+### 3. Start the development server
 
-This project uses the free tier of the [CoinGecko API](https://www.coingecko.com/en/api/documentation). Please be aware of rate limits:
-- 10-30 calls per minute
-- No API key required for basic endpoints
+```bash
+npm run dev
+```
 
-## License
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
-MIT"# Real-time-Crypto-Price-Tracker" 
+## 📡 CoinGecko API
+
+This project uses the [CoinGecko API](https://www.coingecko.com/en/api/documentation) (free tier).  
+**Note**: No API key is needed, but rate limits apply:
+- 10–30 requests per minute
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
