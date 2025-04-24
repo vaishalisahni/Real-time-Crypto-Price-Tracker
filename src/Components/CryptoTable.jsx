@@ -31,22 +31,29 @@ const CryptoTable = () => {
       searchTerm: ''
     });
   
-
   // Handle pagination changes
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
-  // Handle items per page change
+  // Handle items per page change - Modified to use a reference for persistence
   const handleItemsPerPageChange = (e) => {
-    setItemsPerPage(Number(e.target.value));
+    const newItemsPerPage = Number(e.target.value);
+    setItemsPerPage(newItemsPerPage);
     setCurrentPage(1); // Reset to first page when changing items per page
+    
+    // Immediately fetch with new items per page to avoid getting reset
+    dispatch(fetchCryptoData({ page: 1, perPage: newItemsPerPage }));
   };
 
   // Handle fetching data for different pages
+  // Modified to prevent unnecessary refetches when itemsPerPage changes
   useEffect(() => {
-    dispatch(fetchCryptoData({ page: currentPage, perPage: itemsPerPage }));
-  }, [dispatch, currentPage, itemsPerPage]);
+    // Only fetch data when the page changes
+    if (!loading) {
+      dispatch(fetchCryptoData({ page: currentPage, perPage: itemsPerPage }));
+    }
+  }, [dispatch, currentPage]); // Removed itemsPerPage from dependencies
 
   const formatLastUpdated = () => {
     if (!lastUpdated) return '';
