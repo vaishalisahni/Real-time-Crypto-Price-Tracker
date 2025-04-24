@@ -11,6 +11,12 @@ A responsive React + Redux Toolkit application that tracks real-time cryptocurre
 - **Visual price charts**: 7-day sparkline charts for each coin  
 - **Performance optimized**: Selectors and `memo` used to reduce unnecessary re-renders  
 
+## 🎥 Demo
+
+Check out the live demo video of the project here:  
+👉 [Real-Time Crypto Price Tracker - Demo](https://drive.google.com/file/d/1PVH8t-qPTZu8rsBxYbU6PQDH6oIepUGd/view?usp=sharing)
+
+
 ## 🛠 Tech Stack
 
 - **React 18**
